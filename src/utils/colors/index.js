@@ -1,5 +1,6 @@
 const colors={
-    green:'#0BCAD4',
+    green1:'#0BCAD4',
+    green2:'#EDFCFD',
     white:'white',
     black:'black',
     grey1:'#7D8797',
@@ -10,14 +11,15 @@ const colors={
 }
 
 const themeColors={
-    primary:colors.green,
+    primary:colors.green1,
     secondary:colors.dark2,
     white:colors.white,
     black:colors.black,
     grey1:colors.grey1,
     grey2:colors.grey2,
     grey3:colors.grey3,
-    dark1:colors.dark1
+    dark1:colors.dark1,
+    green2:colors.green2
 }
 
 export default themeColors

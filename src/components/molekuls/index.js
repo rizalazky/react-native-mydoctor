@@ -4,11 +4,15 @@ import HomeProfile from './HomeProfile'
 import DoctorCategory from './DoctorCategory'
 import NewsItem from './NewsItem'
 import RatedDoctor from './RatedDoctor'
+import List from './List'
+import ListRumahSakit from './ListRumahSakit'
 export {
     Header,
     TabNavigator,
     HomeProfile,
     DoctorCategory,
     NewsItem,
-    RatedDoctor
+    RatedDoctor,
+    List,
+    ListRumahSakit
 }

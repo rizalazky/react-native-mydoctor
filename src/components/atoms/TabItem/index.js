@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
         justifyContent:"center",
     },
     TabItem__Text:(isFocused)=>({
-        color:isFocused ?Colors.primary : Colors.grey3,
+        color:isFocused ? Colors.primary : Colors.grey3,
         margin:10
     })
 })
