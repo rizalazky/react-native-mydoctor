@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 import { StyleSheet, Text, View,ScrollView } from 'react-native'
 import { G } from 'react-native-svg'
@@ -5,7 +6,7 @@ import { Gap } from '../../components/atoms'
 import { DoctorCategory, HomeProfile, NewsItem,RatedDoctor } from '../../components/molekuls'
 import { Fonts,Colors } from '../../utils'
 
-const Doctor = () => {
+const Doctor = ({navigation}) => {
     return (
         <View style={styles.page}>
             <View style={styles.container}>
@@ -17,11 +18,11 @@ const Doctor = () => {
                     <Gap height={16}/>
                     <View style={{flexDirection:"row"}}>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                            <DoctorCategory icon="DokterUmum" label="Dokter Umum"/>
-                            <DoctorCategory icon="Psikater" label="Psikater"/>
-                            <DoctorCategory icon="DokterObat" label="Dokter Obat"/>
-                            <DoctorCategory icon="DokterObat" label="Dokter Obat"/>
-                            <DoctorCategory icon="DokterObat" label="Dokter Obat"/>
+                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="DokterUmum" label="Dokter Umum"/>
+                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="Psikater" label="Psikater"/>
+                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="DokterObat" label="Dokter Obat"/>
+                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="DokterObat" label="Dokter Obat"/>
+                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="DokterObat" label="Dokter Obat"/>
                         </ScrollView>
                     </View>
                     <Gap height={30}/>

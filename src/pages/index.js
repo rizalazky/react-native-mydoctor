@@ -6,5 +6,6 @@ import UploadFoto from './UploadPhoto'
 import Doctor from './Doctor'
 import Messages from './Messages'
 import Hospitals from './Hospitals'
+import ListDoctor from './ListDoctor'
 
-export {Splash,GetStarted,LogIn,Register,UploadFoto,Doctor,Hospitals,Messages}
+export {Splash,GetStarted,LogIn,Register,UploadFoto,Doctor,Hospitals,Messages,ListDoctor}

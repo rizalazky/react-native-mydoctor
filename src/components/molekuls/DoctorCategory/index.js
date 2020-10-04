@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ILCatObat, ILCatPsikiater, ILCatUmum } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
-const DoctorCategory = ({label,icon}) => {
+const DoctorCategory = ({label,icon,onPress}) => {
 
     const Icon=()=>{
         if(icon === "DokterUmum"){
@@ -20,11 +20,11 @@ const DoctorCategory = ({label,icon}) => {
     }
 
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Icon/>
             <Text style={styles.text}>Saya Butuh</Text>
             <Text style={styles.label}>{label}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 

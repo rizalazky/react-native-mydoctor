@@ -1,17 +1,20 @@
 import React from 'react'
-import { StyleSheet, Text, View,Image } from 'react-native'
-import { DummyDoctor1, DummyDoctor4 } from '../../../assets'
+import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
+import { DummyDoctor1, DummyDoctor4, IconNext } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
-const List = () => {
+const List = ({isNext,onPress}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Image source={DummyDoctor4} style={styles.image}/>
-            <View>
+            <View style={{flex:1}}>
                 <Text style={styles.name}>Alexander Janie</Text>
                 <Text style={styles.textMessage}>Baik ibu,terimakasih banyak atas</Text>
             </View>
-        </View>
+            {
+                isNext && <IconNext/> 
+            }
+        </TouchableOpacity>
     )
 }
 
@@ -22,7 +25,8 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         padding:16,
         borderBottomWidth:2,
-        borderBottomColor:Colors.grey2
+        borderBottomColor:Colors.grey2,
+        justifyContent:"space-between"
     },
     image:{
         width:46,
