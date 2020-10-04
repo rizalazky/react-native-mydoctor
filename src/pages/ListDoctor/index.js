@@ -7,9 +7,9 @@ const ListDoctor = ({navigation}) => {
     return (
         <View style={styles.page}>
             <Header title={`Pilih Dokter`} type='dark' onPress={()=>navigation.goBack()}/>
-            <List isNext onPress={navigation.navigate('Chatting')}/>
-            <List isNext onPress={navigation.navigate('Chatting')}/>
-            <List isNext onPress={navigation.navigate('Chatting')}/>
+            <List isNext onPress={()=>navigation.navigate('Chatting')}/>
+            <List isNext onPress={()=>navigation.navigate('Chatting')}/>
+            <List isNext onPress={()=>navigation.navigate('Chatting')}/>
         </View>
     )
 }

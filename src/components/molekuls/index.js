@@ -6,6 +6,8 @@ import NewsItem from './NewsItem'
 import RatedDoctor from './RatedDoctor'
 import List from './List'
 import ListRumahSakit from './ListRumahSakit'
+import InputChat from './InputChat'
+import ChatItem from './ChatItem'
 export {
     Header,
     TabNavigator,
@@ -14,5 +16,7 @@ export {
     NewsItem,
     RatedDoctor,
     List,
-    ListRumahSakit
+    ListRumahSakit,
+    InputChat,
+    ChatItem
 }

@@ -2,11 +2,16 @@ import React from 'react'
 import { StyleSheet, Text,TouchableOpacity } from 'react-native'
 import { Colors, Fonts } from '../../../utils'
 import ButtonIcon from './ButtonIcon'
+import ButtonSendChat from './ButtonSendChat'
 
-export default function Button({type,title,onPress,icon,width}) {
+export default function Button({type,title,onPress,icon,width,disabled}) {
 
     if(type ==="icon"){
-        return <ButtonIcon icon={icon} width={width} onPress={onPress}/>
+        return <ButtonIcon icon={icon} width={width} onPress={onPress} disabled={disabled}/>
+    }
+    
+    if(type === 'send-chat'){
+        return <ButtonSendChat disabled={disabled}/>
     }
 
     return (

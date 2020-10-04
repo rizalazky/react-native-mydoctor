@@ -1,7 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { IconAddPhoto, IconBackDark, IconBackLight } from '../../../assets'
+import { IconAddPhoto, IconBackDark, IconBackLight, IconSendDark, IconSendLight } from '../../../assets'
 
 const ButtonIcon = ({width,icon,onPress}) => {
     
@@ -30,7 +30,7 @@ const ButtonIcon = ({width,icon,onPress}) => {
 export default ButtonIcon
 
 const styles = StyleSheet.create({
-    ButtonIcon:(width)=>({
-        width:width
+    ButtonIcon:(width,disabled)=>({
+        width:width,
     })
 })
