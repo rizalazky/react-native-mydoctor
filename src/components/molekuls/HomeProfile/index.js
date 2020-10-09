@@ -1,17 +1,18 @@
 import React from 'react'
 import { StyleSheet, Text, View,Image } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { DummyUser } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
-const HomeProfile = () => {
+const HomeProfile = ({onPress}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <Image source={DummyUser} style={styles.image}/>
             <View>
                 <Text style={styles.userName}>Shayna Mellinda</Text>
                 <Text style={styles.userProfesional}>Product Designer</Text>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

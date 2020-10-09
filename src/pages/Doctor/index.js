@@ -12,7 +12,7 @@ const Doctor = ({navigation}) => {
             <View style={styles.container}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     <Gap height={30}/>
-                    <HomeProfile/>
+                    <HomeProfile onPress={()=>navigation.navigate('UserProfile')}/>
                     <Gap height={30}/>
                     <Text style={styles.text}>Mau konsultasi dengan siapa hari ini?</Text>
                     <Gap height={16}/>
@@ -27,9 +27,9 @@ const Doctor = ({navigation}) => {
                     </View>
                     <Gap height={30}/>
                     <Text style={styles.text}>Top Rated Doctors</Text>
-                    <RatedDoctor/>
-                    <RatedDoctor/>
-                    <RatedDoctor/>
+                    <RatedDoctor onPress={()=>navigation.navigate('DoctorProfile')}/>
+                    <RatedDoctor onPress={()=>navigation.navigate('DoctorProfile')}/>
+                    <RatedDoctor onPress={()=>navigation.navigate('DoctorProfile')}/>
                     <Gap height={30}/>
                     <Text style={styles.text}>Goos News</Text>
                     <Gap height={16}/>

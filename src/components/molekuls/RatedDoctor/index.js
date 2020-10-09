@@ -1,11 +1,12 @@
 import React from 'react'
 import { StyleSheet, Text, View,Image } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { DummyDoctor1, IconStar } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
-const RatedDoctor = ({doctorName,spesialis}) => {
+const RatedDoctor = ({onPress,doctorName,spesialis}) => {
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <View style={styles.container__profile}>
                 <Image source={DummyDoctor1} style={styles.profileImage}/>
                 <View>
@@ -20,7 +21,7 @@ const RatedDoctor = ({doctorName,spesialis}) => {
                 <IconStar/>
                 <IconStar/>
             </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

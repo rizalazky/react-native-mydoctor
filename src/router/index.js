@@ -3,7 +3,9 @@ import { createStackNavigator} from '@react-navigation/stack'
 import { NavigationContainer} from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { GetStarted, Register, Splash,LogIn, UploadFoto, Doctor, 
-    Messages, Hospitals,ListDoctor,Chatting } from '../pages'
+    Messages, Hospitals,ListDoctor,Chatting,UserProfile,DoctorProfile, 
+    EditProfile
+} from '../pages'
 import { TabNavigator } from '../components';
 
 
@@ -33,7 +35,9 @@ export default function Router() {
                 <Stack.Screen name="UploadFoto" component={UploadFoto} options={{headerShown:false}}/>
                 <Stack.Screen name="Main" component={Main} options={{headerShown:false}}/>
                 <Stack.Screen name="ListDoctor" component={ListDoctor} options={{headerShown:false}}/>
-                <Stack.Screen name="Chatting" component={Chatting} options={{headerShown:false}}/>
+                <Stack.Screen name="DoctorProfile" component={DoctorProfile} options={{headerShown:false}}/>
+                <Stack.Screen name="UserProfile" component={UserProfile} options={{headerShown:false}}/>
+                <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown:false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
