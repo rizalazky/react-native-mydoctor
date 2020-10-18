@@ -27,7 +27,7 @@ const Main=()=>{
 export default function Router() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Main">
+            <Stack.Navigator initialRouteName="Splash">
                 <Stack.Screen name="Splash" options={{headerShown:false}} component={Splash}/>
                 <Stack.Screen name="GetStarted" component={GetStarted} options={{headerShown:false}}/>
                 <Stack.Screen name="Register" component={Register} options={{headerShown:false}}/>

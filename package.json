@@ -1,5 +1,5 @@
 {
-  "name": "myDoctor",
+  "name": "mydoctor",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,9 +14,11 @@
     "@react-navigation/bottom-tabs": "^5.9.1",
     "@react-navigation/native": "^5.7.5",
     "@react-navigation/stack": "^5.9.2",
+    "firebase": "^7.24.0",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-gesture-handler": "^1.8.0",
+    "react-native-image-picker": "^2.3.4",
     "react-native-reanimated": "^1.13.1",
     "react-native-safe-area-context": "^3.1.8",
     "react-native-screens": "^2.11.0",
@@ -35,5 +37,17 @@
   },
   "jest": {
     "preset": "react-native"
-  }
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rizalazky/react-native-mydoctor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rizalazky/react-native-mydoctor/issues"
+  },
+  "homepage": "https://github.com/rizalazky/react-native-mydoctor#readme",
+  "description": ""
 }

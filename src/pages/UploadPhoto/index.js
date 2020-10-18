@@ -1,28 +1,60 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { StyleSheet, Text, View,Image } from 'react-native'
-import { block } from 'react-native-reanimated'
+import { TouchableOpacity } from 'react-native-gesture-handler'
+import ImagePicker from 'react-native-image-picker'
 // import { Image } from 'react-native-svg'
 
 import { IconAddPhoto, ILNullPhoto } from '../../assets'
 import { Button, Gap, Header, Link } from '../../components'
 import { Colors, Fonts } from '../../utils'
 
-const UploadFoto = ({navigation}) => {
+const UploadFoto = ({navigation,route}) => {
+
+    const {fullName,pekerjaan}=route.params
+    const [photo,setPhoto]=useState(ILNullPhoto)
+
+    const handlePress=()=>{
+        console.log('test')
+        // ImagePicker.launchImageLibrary((response) => {
+        //     // Same code as in above section!
+        //     console.log(response)
+        //     console.log('tet')
+        // });
+        ImagePicker.showImagePicker((response) => {
+            console.log('Response = ', response);
+          
+            if (response.didCancel) {
+              console.log('User cancelled image picker');
+            } else if (response.error) {
+              console.log('ImagePicker Error: ', response.error);
+            } else if (response.customButton) {
+              console.log('User tapped custom button: ', response.customButton);
+            } else {
+              const source = { uri: response.uri };
+          
+              // You can also display the image using data:
+              // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+                
+              setPhoto(source)
+            }
+          });
+    }
+
     return (
         <View style={styles.UploadFoto}>
             <Header title='Upload Foto' onPress={()=>navigation.goBack()}/>
             <View style={styles.UploadFoto__Content}>
                 <View style={styles.UploadFoto__Content__Image}>
-                    <View style={styles.UploadFoto__Content__Image__Wrapper}>
-                        <Image source={ILNullPhoto} style={styles.Avatar}/>
+                    <TouchableOpacity style={styles.UploadFoto__Content__Image__Wrapper} onPress={handlePress}>
+                        <Image source={photo} style={styles.Avatar}/>
                         <IconAddPhoto style={styles.UploadFoto__Button__AddFoto}/>
                         {/* <Button style={styles.UploadFoto__Button__AddFoto} type="icon" icon="add-foto"/> */}
-                    </View>
-                    <Text style={styles.TextName}>Shayna Melinda</Text>
-                    <Text style={styles.TextProfesi}>Product Manager</Text>
+                    </TouchableOpacity>
+                    <Text style={styles.TextName}>{fullName}</Text>
+                    <Text style={styles.TextProfesi}>{pekerjaan}</Text>
                 </View>
                 <View>
-                    <Button title="Upload and Continue"/>
+                    <Button title="Upload and Continue" />
                     <Gap height={20}/>
                     <Link title="Skip for this" align="center"/>
                 </View>
@@ -52,7 +84,8 @@ const styles = StyleSheet.create({
     },
     Avatar:{
         height:130,
-        width:130
+        width:130,
+        borderRadius:130/2
     },
     UploadFoto__Content__Image__Wrapper:{
         borderWidth:1,
