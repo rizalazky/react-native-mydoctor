@@ -25,7 +25,8 @@ const themeColors={
     grey4:colors.grey4,
     dark1:colors.dark1,
     green2:colors.green2,
-    blue1:colors.blue1
+    blue1:colors.blue1,
+    blackWithOpacity:'rgba(0,0,0,0.5)'
 }
 
 export default themeColors

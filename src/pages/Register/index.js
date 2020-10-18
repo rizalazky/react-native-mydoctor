@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View,StyleSheet } from 'react-native'
-import { Button, Gap, Header, Input } from '../../components'
+import { Button, Gap, Header, Input,Loading } from '../../components'
+import { Firebase } from '../../config'
 import { Colors, useForm } from '../../utils'
+import { showMessage } from "react-native-flash-message";
+
 
 
 const Register = ({navigation}) => {
+    const [loading,setLoading]=useState(false)
     const [values,setValues]=useForm({
         fullName:'',
         pekerjaan:'',
@@ -13,16 +17,34 @@ const Register = ({navigation}) => {
     })
 
     const handleContinue=()=>{
+        setLoading(true)
         // console.log(values)
-        
-        navigation.navigate('UploadFoto',{
-            fullName:values.fullName,
-            pekerjaan:values.pekerjaan
+        Firebase.auth().createUserWithEmailAndPassword(values.email,values.password)
+        .then(success=>{
+            // Firebase.database()
+            setLoading(false)
+            showMessage({
+                message:'Registrasi Berhasil',
+                type:'success'
+            })
+        }).catch(err=>{
+            console.log(err)
+            setLoading(false)
+            showMessage({
+                message:'Registrasi Gagal,'+err,
+                type:'danger'
+            })
         })
+        
+        // navigation.navigate('UploadFoto',{
+        //     fullName:values.fullName,
+        //     pekerjaan:values.pekerjaan
+        // })
     }
 
 
     return (
+        <>
         <View style={styles.page}>
             <View>
                 <Header title="Daftar Akun" onPress={()=>navigation.goBack()}/>
@@ -36,9 +58,12 @@ const Register = ({navigation}) => {
                 </View>
                 <Gap height={40}/>
                 <Button title="Continue" onPress={handleContinue}/>
-            </View>
-            
+            </View>   
         </View>
+        {
+            loading && <Loading/>
+        }
+        </>
     )
 }
 

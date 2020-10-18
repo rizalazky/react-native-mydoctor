@@ -1,5 +1,5 @@
-import firebase from './Firebase'
+import Firebase from './Firebase'
 
 export {
-    firebase
+    Firebase
 }
