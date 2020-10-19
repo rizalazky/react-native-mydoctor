@@ -31,7 +31,8 @@ const LogIn = ({navigation}) => {
                     fullName:res.val().fullName,
                     email:res.val().email,
                     pekerjaan:res.val().pekerjaan,
-                    photo:res.val().photo
+                    photo:res.val().photo,
+                    uid:response.user.uid
                 })
                 setIsLoading(false)
                 navigation.navigate('Main')

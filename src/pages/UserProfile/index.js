@@ -12,12 +12,15 @@ const UserProfile = ({navigation}) => {
     })
 
     useEffect(()=>{
+        console.log('User Profile Retrieve')
         _retrieveData('user')
         .then(res=>{
+            console.log(res)
             let dt=res
             dt.photo={uri:res.photo}
             setData(dt)
         })
+        console.log(data)
     },[])
 
 
@@ -31,7 +34,7 @@ const UserProfile = ({navigation}) => {
                 <List isNext title='Edit Profile' 
                         icon='editProfile' 
                         desc='Last Update Yesterday'
-                        onPress={()=>navigation.navigate('EditProfile')}
+                        onPress={()=>navigation.navigate('EditProfile',data)}
                 />
                 <List isNext title='Language' icon='language' desc='Available 12 Language'/>
                 <List isNext title='Give Us Rate' icon='giveUsRate' desc='On Google Playstore'/>

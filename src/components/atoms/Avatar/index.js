@@ -1,9 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View,Image } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { DummyUser, IconEditProfile, IconFemale, IconMale, IconRemovePhoto } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
-const Avatar = ({icon,name,profesion,imageSource}) => {
+const Avatar = ({icon,name,profesion,imageSource,onPress}) => {
 
     const Icon=()=>{
         if(icon=='iconMale'){
@@ -18,9 +19,10 @@ const Avatar = ({icon,name,profesion,imageSource}) => {
 
         return IconMale
     }
+    
 
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={onPress}>
             <View style={styles.imageWrapper}>
                 <Image style={styles.image} source={imageSource}/>  
                 <Icon style={styles.iconStyle}/>
@@ -33,7 +35,7 @@ const Avatar = ({icon,name,profesion,imageSource}) => {
                 </View>
 
             }
-        </View>
+        </TouchableOpacity>
     )
 }
 
