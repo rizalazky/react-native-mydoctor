@@ -1,14 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { ILNullPhoto } from '../../assets'
 import { Avatar, Header, List } from '../../components'
-import { Colors } from '../../utils'
+import { Colors, _retrieveData } from '../../utils'
 
 const UserProfile = ({navigation}) => {
+    const [data,setData]=useState({
+        fullName:'',
+        pekerjaan:'',
+        photo:ILNullPhoto
+    })
+
+    useEffect(()=>{
+        _retrieveData('user')
+        .then(res=>{
+            let dt=res
+            dt.photo={uri:res.photo}
+            setData(dt)
+        })
+    },[])
+
+
     return (
         <View style={styles.container}>
             <Header onPress={()=>navigation.goBack()} title='Profile'/>
             <View style={styles.avatarWrapper}>
-                <Avatar name='Shayna Melinda' profesion='Product Designer' icon='iconFemale'/>
+                <Avatar name={data.fullName} profesion={data.pekerjaan} icon='iconFemale' imageSource={data.photo}/>
             </View>
             <View>
                 <List isNext title='Edit Profile' 

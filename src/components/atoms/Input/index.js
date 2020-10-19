@@ -2,6 +2,8 @@ import React,{useState} from 'react'
 import { StyleSheet, Text, View,TextInput } from 'react-native'
 import { Colors } from '../../../utils'
 
+
+
 const Input = ({label,placeholder,onChangeText,value}) => {
 
     const [border,setBorder]=useState(Colors.grey2)
@@ -27,17 +29,17 @@ export default Input
 const styles = StyleSheet.create({
     Input:{
         height:73,
-        marginVertical:10
+        marginVertical:10,
     },
     Input__Label:{
-        color:Colors.grey1,
-        marginBottom:10
+        // color:Colors.grey2,
+        marginBottom:10,
     },
     Input__TextInput:(border)=>({
         borderWidth:1,
         borderStyle:"solid",
         borderColor:border,
         borderRadius:10,
-        padding:10
+        padding:10,
     })
 })

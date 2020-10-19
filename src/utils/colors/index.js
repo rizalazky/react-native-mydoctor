@@ -1,5 +1,3 @@
-import { color } from "react-native-reanimated"
-
 const colors={
     green1:'#0BCAD4',
     green2:'#EDFCFD',
@@ -14,7 +12,7 @@ const colors={
     blue1:'#0066CB',
 }
 
-const themeColors={
+export const Colors={
     primary:colors.green1,
     secondary:colors.dark2,
     white:colors.white,
@@ -28,5 +26,3 @@ const themeColors={
     blue1:colors.blue1,
     blackWithOpacity:'rgba(0,0,0,0.5)'
 }
-
-export default themeColors

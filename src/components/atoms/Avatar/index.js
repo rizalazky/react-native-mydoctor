@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleSheet, Text, View,Image } from 'react-native'
-import { block } from 'react-native-reanimated'
 import { DummyUser, IconEditProfile, IconFemale, IconMale, IconRemovePhoto } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
@@ -17,8 +16,9 @@ const Avatar = ({icon,name,profesion,imageSource}) => {
             return <IconRemovePhoto style={styles.iconStyle}/>
         }
 
-        return null
+        return IconMale
     }
+
     return (
         <View style={styles.container}>
             <View style={styles.imageWrapper}>
@@ -26,7 +26,7 @@ const Avatar = ({icon,name,profesion,imageSource}) => {
                 <Icon style={styles.iconStyle}/>
             </View>
             {
-                name &&
+                name !=null &&
                 <View>
                     <Text style={styles.nameText}>{name}</Text>
                     <Text style={styles.professionText}>{profesion}</Text>

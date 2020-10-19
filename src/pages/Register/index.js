@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View,StyleSheet } from 'react-native'
 import { Button, Gap, Header, Input,Loading } from '../../components'
 import { Firebase } from '../../config'
-import { Colors, useForm } from '../../utils'
+import { Colors, _storeData,useForm, _retrieveData } from '../../utils'
 import { showMessage } from "react-native-flash-message";
 
 
@@ -18,28 +18,35 @@ const Register = ({navigation}) => {
 
     const handleContinue=()=>{
         setLoading(true)
-        // console.log(values)
         Firebase.auth().createUserWithEmailAndPassword(values.email,values.password)
         .then(success=>{
             // Firebase.database()
+            let data={
+                fullName:values.fullName,
+                email:values.email,
+                pekerjaan:values.pekerjaan,
+                uid:success.user.uid
+            }
+            
             setLoading(false)
-            showMessage({
-                message:'Registrasi Berhasil',
-                type:'success'
+            Firebase.database().ref('users/'+success.user.uid+'/').set(data)
+            .then(res=>{
+                console.log(res)
+                showMessage({
+                    message:'Registrasi Berhasil',
+                    type:'success'
+                })
+                _storeData('user',data)
+                navigation.navigate('UploadFoto',data)
             })
         }).catch(err=>{
             console.log(err)
             setLoading(false)
             showMessage({
-                message:'Registrasi Gagal,'+err,
+                message:'Sign Up Failed...'+err.message,
                 type:'danger'
             })
         })
-        
-        // navigation.navigate('UploadFoto',{
-        //     fullName:values.fullName,
-        //     pekerjaan:values.pekerjaan
-        // })
     }
 
 

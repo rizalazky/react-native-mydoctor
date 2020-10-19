@@ -1,16 +1,32 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import { StyleSheet, Text, View,Image } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { DummyUser } from '../../../assets'
-import { Colors, Fonts } from '../../../utils'
+import { DummyUser, ILNullPhoto } from '../../../assets'
+import { Colors, Fonts, _retrieveData } from '../../../utils'
 
 const HomeProfile = ({onPress}) => {
+
+    const [dataUser,setDataUser]=useState({
+        fullName:'',
+        pekerjaan:'',
+        photo:ILNullPhoto
+    })
+
+    useEffect(() => {
+        _retrieveData('user').then(res=>{
+            let data=res
+            data.photo={uri:res.photo}
+            setDataUser(data)
+        })
+        
+    }, [])
+
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
-            <Image source={DummyUser} style={styles.image}/>
+            <Image source={dataUser.photo} style={styles.image}/>
             <View>
-                <Text style={styles.userName}>Shayna Mellinda</Text>
-                <Text style={styles.userProfesional}>Product Designer</Text>
+                <Text style={styles.userName}>{dataUser.fullName}</Text>
+                <Text style={styles.userProfesional}>{dataUser.pekerjaan}</Text>
             </View>
         </TouchableOpacity>
     )

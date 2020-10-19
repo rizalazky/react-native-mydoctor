@@ -1,4 +1,4 @@
-const Fonts={
+export const Fonts={
     NunitoBlack :'Nunito-Black',
     NunitoBold :'Nunito-Bold',
     NunitoExtraBold :'Nunito-ExtraBold',
@@ -7,5 +7,3 @@ const Fonts={
     NunitoRegular :'Nunito-Regular',
     NunitoSemiBold :'Nunito-SemiBold',
 }
-
-export default Fonts

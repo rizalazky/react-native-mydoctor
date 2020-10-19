@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text,TouchableOpacity,View } from 'react-native'
 import { Colors, Fonts } from '../../../utils'
 import ButtonIcon from './ButtonIcon'
 import ButtonSendChat from './ButtonSendChat'
@@ -14,6 +14,14 @@ export default function Button({type,title,onPress,icon,width,disabled}) {
         return <ButtonSendChat disabled={disabled}/>
     }
 
+    if(disabled){
+        return(
+            <View style={styles.disabled} onPress={onPress}>
+                <Text style={styles.ButtonText(type)}>{title}</Text>
+            </View>
+        )
+    }
+
     return (
         <TouchableOpacity style={styles.Button(type)} onPress={onPress}>
             <Text style={styles.ButtonText(type)}>{title}</Text>
@@ -22,6 +30,11 @@ export default function Button({type,title,onPress,icon,width,disabled}) {
 }
 
 const styles = StyleSheet.create({
+    disabled:{
+        backgroundColor:Colors.grey1,
+        paddingVertical:10,
+        borderRadius:10, 
+    },
     Button:(type)=>({
       backgroundColor:type !== "secondary"?Colors.primary:Colors.white,
       paddingVertical:10,
