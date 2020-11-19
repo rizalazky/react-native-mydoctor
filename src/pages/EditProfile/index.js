@@ -1,22 +1,35 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { showMessage } from 'react-native-flash-message'
 import ImagePicker from 'react-native-image-picker'
+import { ILNullPhoto } from '../../assets'
 import {Avatar,Button,Gap,Header, Input, Loading} from '../../components'
 import { Firebase } from '../../config'
-import { Colors, useForm, _storeData } from '../../utils'
+import { Colors, useForm, _retrieveData, _storeData } from '../../utils'
 
 const EditProfile = ({navigation,route}) => {
     const [isLoading,setIsLoading]=useState(false)
-    const [photo,setPhoto]=useState(route.params.photo)
+    const [photo,setPhoto]=useState(ILNullPhoto)
     const [photoForDb,setPhotoForDb]=useState()
     const [data,setData]=useForm({
         fullName:route.params.fullName,
         pekerjaan:route.params.pekerjaan,
-        email:route.params.email,
-        password:'',
+        email:route.params.email
     })
+    const [password,setPassword]=useState('');
     
+
+    useEffect(()=>{
+        _retrieveData('user').then(res=>{
+            console.log('res')
+            console.log(res)
+            setPhoto({uri:res.photo})
+            setPhotoForDb(res.photo)
+        })
+        // setPhotoForDb(route.params.photo)
+        
+    },[])
+
     const getPhoto=()=>{
         ImagePicker.showImagePicker({
             maxWidth:200,
@@ -34,13 +47,38 @@ const EditProfile = ({navigation,route}) => {
     }
 
     const saveProfile=()=>{
-        setIsLoading(true)
+        // setIsLoading(true)
+        // console.log('Save')
         let dt={
             fullName:data.fullName,
             email:data.email,
             pekerjaan:data.pekerjaan,
             uid:route.params.uid,
-            photo:photoForDb
+        } 
+
+        if(photoForDb){
+            dt={
+                fullName:data.fullName,
+                email:data.email,
+                pekerjaan:data.pekerjaan,
+                uid:route.params.uid,
+                photo:photoForDb
+            } 
+        }  
+        
+
+        if(password.length > 0){
+            Firebase.auth().onAuthStateChanged(user=>{
+                if(user){
+                    user.updatePassword(password).catch(err=>{
+                        setIsLoading(false)
+                        showMessage({
+                            message:'Failed to Update Password'+err,
+                            type:"danger",
+                        })
+                    })
+                }
+            })
         }
 
         Firebase.database().ref(`users/${dt.uid}/`).update(dt)
@@ -50,12 +88,14 @@ const EditProfile = ({navigation,route}) => {
                 message:'Success Update Data',
                 type:"success"
             })
+            dt.photo=photoForDb
+            console.log('data store when save')
             _storeData('user',dt)
         })
         .catch(err=>{
             setIsLoading(false)
             showMessage({
-                message:'Failed to Update Data',
+                message:'Failed to Update Data'+err,
                 type:"warning"
             })
         })
@@ -70,7 +110,7 @@ const EditProfile = ({navigation,route}) => {
                     <Input label='Full Name' value={data.fullName} onChangeText={(text)=>setData('fullName',text)}/>
                     <Input label='Pekerjaan' value={data.pekerjaan} onChangeText={(text)=>setData('pekerjaan',text)}/>
                     <Input label='Email Adress' value={data.email} onChangeText={(text)=>setData('email',text)}/>
-                    <Input label='Password' value={data.password} onChangeText={(text)=>setData('password',text)}/>
+                    <Input label='Password' secureTextEntry value={password} onChangeText={(text)=>setPassword(text)}/>
                     <Gap height={40}/>
                     <Button title='Save Profile' type='primary' onPress={saveProfile}/>
                 </View>

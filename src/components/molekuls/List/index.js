@@ -3,7 +3,7 @@ import { StyleSheet, Text, View,Image, TouchableOpacity } from 'react-native'
 import { DummyDoctor1, DummyDoctor4, IconEditProfile, IconHelp, IconLanguage, IconNext, IconRate } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
-const List = ({isNext,onPress,title,desc,icon}) => {
+const List = ({isNext,onPress,title,desc,icon,imageSource}) => {
 
     const Icon=()=>{
         if(icon=='editProfile'){
@@ -26,7 +26,7 @@ const List = ({isNext,onPress,title,desc,icon}) => {
                 icon ?
                 (<Icon style={styles.image}/>)
                 :(
-                <Image source={DummyDoctor4} style={styles.image}/>
+                <Image source={imageSource} style={styles.image}/>
                 )
             }
             <View style={{flex:1,marginLeft:10}}>
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
         justifyContent:"space-between"
     },
     image:{
-        width:46,
-        height:46,
-        borderRadius:46/2,
+        width:40,
+        height:40,
+        borderRadius:40/2,
         marginRight:16
     },
     name:{

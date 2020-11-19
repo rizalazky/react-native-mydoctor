@@ -7,6 +7,7 @@ import { Colors, Fonts } from '../../../utils'
 const Avatar = ({icon,name,profesion,imageSource,onPress}) => {
 
     const Icon=()=>{
+        console.log(icon)
         if(icon=='iconMale'){
             return <IconMale style={styles.iconStyle}/>
         }
@@ -17,7 +18,7 @@ const Avatar = ({icon,name,profesion,imageSource,onPress}) => {
             return <IconRemovePhoto style={styles.iconStyle}/>
         }
 
-        return IconMale
+        return <IconRemovePhoto/>
     }
     
 

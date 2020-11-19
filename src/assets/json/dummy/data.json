@@ -1,0 +1,233 @@
+{
+    "doctor_categories" : {
+      "cat_1" : {
+        "desc" : "Dokter Umum",
+        "id" : "cat_1"
+      },
+      "cat_2" : {
+        "desc" : "Psikater",
+        "id" : "cat_2"
+      },
+      "cat_3" : {
+        "desc" : "Dokter Obat",
+        "id" : "cat_3"
+      },
+      "cat_4" : {
+        "desc" : "Dokter Anak",
+        "id" : "cat_4"
+      },
+      "cat_5" : {
+        "desc" : "Dokter Gigi",
+        "id" : "cat_5"
+      }
+    },
+    "list_doctor" : {
+      "doc_1" : {
+        "doctorCategoryId" : "cat_1",
+        "doctorName" : "Alexandria",
+        "id" : 1,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor1.png?alt=media&token=b1e736df-90d4-4560-808a-db1c43224cf5",
+        "rating" : 3,
+        "spesialis":"Dokter Umum",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_10" : {
+        "doctorCategoryId" : "cat_3",
+        "doctorName" : "Leroy Sane",
+        "id" : 10,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor10.png?alt=media&token=94a9d757-6a98-4375-809d-60186bf8fca9",
+        "rating" : 3,
+        "spesialis":"Dokter Obat",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_11" : {
+        "doctorCategoryId" : "cat_4",
+        "doctorName" : "Sukoday",
+        "id" : 11,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor11.png?alt=media&token=ea638bec-8ff8-4c3d-8bad-44340e1196d5",
+        "rating" : 3,
+        "spesialis":"Dokter Anak",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_12" : {
+        "doctorCategoryId" : "cat_4",
+        "doctorName" : "Sukmad",
+        "id" : 12,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor2.png?alt=media&token=2bf683b3-9dd5-480b-8839-c238de837651",
+        "rating" : 3,
+        "spesialis":"Dokter Anak",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_13" : {
+        "doctorCategoryId" : "cat_4",
+        "doctorName" : "dzeko",
+        "id" : 13,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor3.png?alt=media&token=52c243ad-2145-454a-8c53-96bff9042988",
+        "rating" : 3,
+        "spesialis":"Dokter Anak",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_14" : {
+        "doctorCategoryId" : "cat_5",
+        "doctorName" : "Balotelli",
+        "id" : 14,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor4.png?alt=media&token=87e3b256-219b-404a-a421-a2e073295982",
+        "rating" : 3,"spesialis":"Dokter Gigi",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_15" : {
+        "doctorCategoryId" : "cat_5",
+        "doctorName" : "Silva David",
+        "id" : 15,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor5.png?alt=media&token=5e341071-6a89-48ab-a02d-14bf2aae1fac",
+        "rating" : 5,
+        "spesialis":"Dokter Gigi",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_16" : {
+        "doctorCategoryId" : "cat_5",
+        "doctorName" : "Nastasic",
+        "id" : 16,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor9.png?alt=media&token=bc41cfc2-0a0f-4e97-975b-5d25b74c1bc0",
+        "rating" : 4,
+        "spesialis":"Dokter Gigi",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_2" : {
+        "doctorCategoryId" : "cat_1",
+        "doctorName" : "Abonlahor",
+        "id" : 2,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor2.png?alt=media&token=2bf683b3-9dd5-480b-8839-c238de837651",
+        "rating" : 4,
+        "spesialis":"Dokter Umum",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_3" : {
+        "doctorCategoryId" : "cat_1",
+        "doctorName" : "Sujamal",
+        "id" : 3,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor3.png?alt=media&token=52c243ad-2145-454a-8c53-96bff9042988",
+        "rating" : 3,
+        "spesialis":"Dokter Umum",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_5" : {
+        "doctorCategoryId" : "cat_2",
+        "doctorName" : "Jalaludin",
+        "id" : 5,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor4.png?alt=media&token=87e3b256-219b-404a-a421-a2e073295982",
+        "rating" : 3,
+        "spesialis":"Dokter Umum",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_6" : {
+        "doctorCategoryId" : "cat_2",
+        "doctorName" : "Ratu Jodha",
+        "id" : 6,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor5.png?alt=media&token=5e341071-6a89-48ab-a02d-14bf2aae1fac",
+        "rating" : 3,
+        "spesialis":"Psikater",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_7" : {
+        "doctorCategoryId" : "cat_2",
+        "doctorName" : "Rukayah",
+        "id" : 7,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor6.png?alt=media&token=d75cdd32-f53d-4d13-9192-a57e83a9a736",
+        "rating" : 3,
+        "spesialis":"Psikater",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_8" : {
+        "doctorCategoryId" : "cat_3",
+        "doctorName" : "Candragupta",
+        "id" : 8,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor7.png?alt=media&token=8ca0294c-c6ed-4cdf-82f0-613101b0e7dd",
+        "rating" : 3,
+        "spesialis":"Dokter Obat",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      },
+      "doc_9" : {
+        "doctorCategoryId" : "cat_3",
+        "doctorName" : "Aguero",
+        "id" : 9,
+        "image" : "https://firebasestorage.googleapis.com/v0/b/react-native-my-doctor.appspot.com/o/doctor8.png?alt=media&token=d0f7a2ca-e9b2-4a42-9486-51a5a6415e35",
+        "rating" : 3,
+        "spesialis":"Dokter Obat",
+        "alumnus":"Universitas Indonesia",
+        "tempat_praktik":"Rumah Sakit Rizal",
+        "no_str":"12345556677",
+        "jenis_kelamin":"Pria"
+      }
+    },
+    "users" : {
+      "0SNbqkhUtgTHhVNaTM8fVtfrnr93" : {
+        "email" : "Test01@gmail.com",
+        "fullName" : "Test",
+        "pekerjaan" : "Test",
+        "photo" : "data:image/jpeg;base64,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",
+        "uid" : "0SNbqkhUtgTHhVNaTM8fVtfrnr93"
+      },
+      "4mgryjQY4DV1m6G9cReHeezybwz1" : {
+        "email" : "Rizalazky26@gmail.com",
+        "fullName" : "Mohammad Rizal Azky ",
+        "pekerjaan" : "React Native Developer",
+        "photo" : "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wAARCADIAHsDASIAAhEBAxEB/8QAGwABAAIDAQEAAAAAAAAAAAAAAAMEAQIFBgf/xAAwEAACAgEDAgQDBwUAAAAAAAAAAQIDEQQSITFBBRNRYSJxoQYyQpGxwfAjUoHR4f/EABgBAQEBAQEAAAAAAAAAAAAAAAABAwIE/8QAHBEBAQACAwEBAAAAAAAAAAAAAAECEQMhMUEy/9oADAMBAAIRAxEAPwD5+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACSuG5liNCk1GPL/AJ7E2sm1MFmeleJNcOPVFYS7LNAAKgAAAAAAAAAABlLLSMFrQQrnevNhKcV2jLa/zF6Il0ekzDzrpbK88c8yOrp5aSMEnVubXRLp+5Xg1FdoNfDFtfTpn6FO7UOu9rM8pYe5f7RhZcm8swjpeI6PbX51OcJdM5wjg3Q2yyujL0fErHW6sLD6sratxbTjHavmdYSzquc7MvFYAGrIAAAAAAAAAAAn0bxfF5wskBd0Ond1becJTjl/N4JfFnrpaW2p12KxTjYm4wmlzzzw+izyc3VaaVeocJvpJpvOe/Jd0Fr007KZNtNpPDlhNcc889+CJRd8XNwxJ9cdzP8ANafpJfoYUQhLEm4yxY21jvnD74x+hU19fDkscS2vH6nSUoanTw3QjW0n0XOecJPr3S+r7GnimhVeivkpc06hww+6xjK/IT1L44QANWYAAAAAAAAAABc8OmnOVFkpRrsWG129ymSVPbLd6AdW6nURsWGpxy05d3/P3ZPHS21quDjL+s/gymtzzjC9X7FGnU7IOy1uTTwlk7mlfiL0lcoW1tRkp1yrmlGOVjlbeerOLHeN0i0Wj1TvspUlTtwp7ucPPp88clf7SUrQwq0dVrmkt05P8TMvV3w1V+nsshZcnzOv7sn3RW8ctlO5Stik3FYj/b7EnVkL324wANHAAAAAAAAAAOwALgADec90UkZrlPiMW0pfD7EZcs08qdDp7ZRlHzLJZ+SSxx/lkHqKPDNJolHy3veM7m+r7nnfHLd+saXRHooysrp23WeZPDzP17HktbPfqpvOeTDj7ztbZ9YRAAD0MQAAAAABnBnaBqBgztYGAb7GYccdQJNNYqrVJpPHqdeepr1mi8i1Zk5xdfs88/TJw8FnQznXepL8OevusHGWP13jl8ekt+42njj9jylst1spLo2ejjqIuGJSj8axl9meecDLhmttOb4iBJ5T9TDra+R6GDQGWmjGAAM4Y2sBkzuNQBnPJspmgAkdnoaNt9TAAyb1z2pp9+uCMzkC1VfVXJOUHNd10NdRqVdNSUFHCxx3/wClcwTUXdS+aHYmRAaRvKSfQzBxXUjBRM5RNfMXoRgmgABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAf/Z",
+        "uid" : "4mgryjQY4DV1m6G9cReHeezybwz1"
+      },
+      "7AL4CpMJZwXYFtfF9dAOrrBbBCu2" : {
+        "email" : "Abc1@gmail.com",
+        "fullName" : "Fullname",
+        "pekerjaan" : "Pekerjaan",
+        "uid" : "7AL4CpMJZwXYFtfF9dAOrrBbBCu2"
+      },
+      "VdAulxATmkcKlD7CrcwmIw2uSZn2" : {
+        "email" : "awikdoakw@mail.com",
+        "fullName" : "Rizal",
+        "pekerjaan" : "Bsmillah Berkah",
+        "uid" : "VdAulxATmkcKlD7CrcwmIw2uSZn2"
+      }
+    }
+  }

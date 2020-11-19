@@ -1,12 +1,13 @@
 import firebase from 'firebase'
 const Firebase =firebase.initializeApp( {
-    apiKey: "AIzaSyBQwUtYAL_s0dc4lzC-Al3BUsfgYWqNw5k",
-    authDomain: "react-native-my-doctor.firebaseapp.com",
-    databaseURL: "https://react-native-my-doctor.firebaseio.com",
-    projectId: "react-native-my-doctor",
-    storageBucket: "react-native-my-doctor.appspot.com",
-    messagingSenderId: "752248958189",
-    appId: "1:752248958189:web:6fc8e8f793014598fab0e4"
+  apiKey: "AIzaSyAsex9Tv-N6OKgwpr7O-z7ZxM32T2UdShM",
+  authDomain: "my-doctor-235c3.firebaseapp.com",
+  databaseURL: "https://my-doctor-235c3.firebaseio.com",
+  projectId: "my-doctor-235c3",
+  storageBucket: "my-doctor-235c3.appspot.com",
+  messagingSenderId: "208262114433",
+  appId: "1:208262114433:web:112fd63f7b3d20a10ab180",
+  measurementId: "G-1MVYJDRSWL"
   });
 
 export default Firebase

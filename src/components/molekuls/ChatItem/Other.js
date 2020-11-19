@@ -7,10 +7,9 @@ const Other = ({text,date}) => {
     return (
         <View style={styles.container}>
             <View style={styles.container_text}>
-                <Text style={styles.text}>Ibu dokter, apakah memakan
-                    jeruk tiap hari itu buruk?</Text>
+    <Text style={styles.text}>{text}</Text>
             </View>
-            <Text style={styles.date}>4:20 AM</Text>
+    <Text style={styles.date}>{date}</Text>
         </View>
     )
 }

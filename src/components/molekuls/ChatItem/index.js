@@ -5,13 +5,11 @@ import Other from './Other'
 const ChatItem = ({isMe,text,date}) => {
 
     if(isMe){
-        return <IsMe text='Ibu dokter, apakah memakan
-        jeruk tiap hari itu buruk?' date='4:20 AM'/>
+        return <IsMe text={text} date={date}/>
     }
     
     return(
-        <Other text='Ibu dokter, apakah memakan
-        jeruk tiap hari itu buruk?' date='4:20 AM'/>
+        <Other text={text} date={date}/>
     )
 
 

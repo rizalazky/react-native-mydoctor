@@ -4,7 +4,7 @@ import { Colors } from '../../../utils'
 
 
 
-const Input = ({label,placeholder,onChangeText,value}) => {
+const Input = ({label,placeholder,onChangeText,value,secureTextEntry}) => {
 
     const [border,setBorder]=useState(Colors.grey2)
     const onFocus=()=>{
@@ -19,6 +19,7 @@ const Input = ({label,placeholder,onChangeText,value}) => {
             <Text style={styles.Input__Label}>{label}</Text>
             <TextInput placeholder={placeholder} value={value}
                 onChangeText={onChangeText}
+                secureTextEntry={secureTextEntry}
                 onFocus={onFocus} onBlur={onBlur} style={styles.Input__TextInput(border)}/>
         </View>
     )

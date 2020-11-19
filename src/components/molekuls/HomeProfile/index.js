@@ -14,6 +14,8 @@ const HomeProfile = ({onPress}) => {
 
     useEffect(() => {
         _retrieveData('user').then(res=>{
+            console.log('response from Home Profile')
+            console.log(res)
             let data=res
             data.photo={uri:res.photo}
             setDataUser(data)

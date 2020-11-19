@@ -1,9 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import { IconSendDark, IconSendLight } from '../../../assets'
 import { Colors } from '../../../utils'
 
-const ButtonSendChat = ({disabled}) => {
+const ButtonSendChat = ({disabled,onPress}) => {
     
     const Icon=()=>{
         if(!disabled){
@@ -13,9 +14,9 @@ const ButtonSendChat = ({disabled}) => {
         return <IconSendDark/>
     }
     return (
-        <View style={styles.container(disabled)}>
+        <TouchableOpacity style={styles.container(disabled)} onPress={onPress}>
             <Icon/>
-        </View>
+        </TouchableOpacity>
     )
 }
 

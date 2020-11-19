@@ -4,15 +4,15 @@ import { DummyDoctor9, IconBackLight } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
 
-const HeaderProfile = ({onPress}) => {
+const HeaderProfile = ({onPress,title,text,image}) => {
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
             <IconBackLight/>
             <View>
-                <Text style={styles.name}>Nabila Putri Hayza</Text>
-                <Text style={styles.profesi}>Dokter Anak</Text>
+                <Text style={styles.name}>{title}</Text>
+                <Text style={styles.profesi}>{text}</Text>
             </View>
-            <Image style={styles.image} source={DummyDoctor9}/>
+            <Image style={styles.image} source={image}/>
         </TouchableOpacity>
     )
 }

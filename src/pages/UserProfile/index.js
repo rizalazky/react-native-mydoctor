@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
-import { ILNullPhoto } from '../../assets'
+import { IconLogOut, ILNullPhoto } from '../../assets'
 import { Avatar, Header, List } from '../../components'
+import { Firebase } from '../../config'
 import { Colors, _retrieveData } from '../../utils'
 
 const UserProfile = ({navigation}) => {
@@ -23,6 +24,15 @@ const UserProfile = ({navigation}) => {
         console.log(data)
     },[])
 
+    const logout=()=>{
+        Firebase.auth().signOut()
+        .then(res=>{
+            console.log(res)
+        }).catch(err=>{
+            console.log(err)
+        })
+    }
+
 
     return (
         <View style={styles.container}>
@@ -39,6 +49,7 @@ const UserProfile = ({navigation}) => {
                 <List isNext title='Language' icon='language' desc='Available 12 Language'/>
                 <List isNext title='Give Us Rate' icon='giveUsRate' desc='On Google Playstore'/>
                 <List isNext title='Help Center' icon='helpCenter' desc='Read Our Guidelines'/>
+                <List isNext title='Sign Out' imageSource={IconLogOut} desc='signout account' onPress={logout}/>
             </View>
         </View>
     )

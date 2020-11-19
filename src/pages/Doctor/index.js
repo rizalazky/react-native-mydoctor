@@ -1,12 +1,61 @@
-import { NavigationContainer } from '@react-navigation/native'
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { StyleSheet, Text, View,ScrollView } from 'react-native'
-import { G } from 'react-native-svg'
 import { Gap } from '../../components/atoms'
 import { DoctorCategory, HomeProfile, NewsItem,RatedDoctor } from '../../components/molekuls'
 import { Fonts,Colors } from '../../utils'
+import {Firebase} from '../../config'
 
 const Doctor = ({navigation}) => {
+
+    const [doctorCategories,setDoctorCategories]=useState([])
+    const [topRatedDoctor,setTopRatedDoctor]=useState([])
+    let data=[]
+    useEffect(()=>{
+        getDoctorCategoriees()
+        getTopRatedDoctor()
+        console.log('topRated',topRatedDoctor)
+    },[])
+
+    const getDoctorCategoriees=()=>{
+        Firebase.database().ref('doctor_categories').once('value')
+        .then(res=>{
+            if(res.val()){
+                setDoctorCategories(res.val())
+            }
+        })
+        // console.log(doctorCategories)
+    }
+
+    const getTopRatedDoctor=()=>{
+        let result={}    
+        Firebase.database()
+        .ref('list_doctor')
+        .orderByChild('rating')
+        .limitToLast(3)
+        .once('value')
+        .then(res=>{
+            let dataaa=[]
+            // console.log('resval',res.val())
+            // Object.values(res.val()).map(data=>{
+            //     Firebase.database()
+            //     .ref('doctor_categories/'+data.doctorCategoryId)
+            //     .once('value')
+            //     .then(response=>{
+            //         let dataFix=data
+            //         dataFix.spesialis=response.val().desc
+            //         console.log('dataFix',dataFix)
+            //         dataaa.push(dataFix)
+            //         console.log('dataa',dataaa)
+            //         // setTopRatedDoctor(oldData=>[...oldData,dataFix])
+
+            //     })
+            // })  
+            setTopRatedDoctor(res.val())
+            console.log('top rated',topRatedDoctor)    
+        })
+
+    }
+
     return (
         <View style={styles.page}>
             <View style={styles.container}>
@@ -18,18 +67,47 @@ const Doctor = ({navigation}) => {
                     <Gap height={16}/>
                     <View style={{flexDirection:"row"}}>
                         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="DokterUmum" label="Dokter Umum"/>
-                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="Psikater" label="Psikater"/>
-                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="DokterObat" label="Dokter Obat"/>
-                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="DokterObat" label="Dokter Obat"/>
-                            <DoctorCategory onPress={()=>navigation.navigate('ListDoctor')} icon="DokterObat" label="Dokter Obat"/>
+                            
+                            {
+                                
+                                Object.values(doctorCategories).map(data=>{
+                                    return(
+                                        <DoctorCategory key={data.id} onPress={()=>navigation.navigate('ListDoctor',{id_cat:data.id,titleHeader:data.desc})} label={data.desc}/>
+                                    )
+                                })
+                            }
+                            
                         </ScrollView>
                     </View>
                     <Gap height={30}/>
                     <Text style={styles.text}>Top Rated Doctors</Text>
-                    <RatedDoctor onPress={()=>navigation.navigate('DoctorProfile')}/>
-                    <RatedDoctor onPress={()=>navigation.navigate('DoctorProfile')}/>
-                    <RatedDoctor onPress={()=>navigation.navigate('DoctorProfile')}/>
+                    {
+                        Object.values(topRatedDoctor).map((topRated)=>{
+                            return(
+                                <RatedDoctor doctorName={topRated.doctorName}
+                                 key={topRated.id}
+                                 spesialis={topRated.spesialis} 
+                                 imageSource={{uri:topRated.image}}
+                                 rate={topRated.rating}
+                                 onPress={()=>navigation.navigate('DoctorProfile',{topRated})}/>
+                            )
+                        }
+                        )
+                    }
+                    {/* {
+                        topRatedDoctor.map(topRated=>{
+                            // console.log('topRated',topRated)
+                            return(
+                                <RatedDoctor doctorName={topRated.doctorName}
+                                 key={topRated.id}
+                                 spesialis={topRated.spesialis} 
+                                 imageSource={{uri:topRated.image}}
+                                 rate={topRated.rating}
+                                 desc={topRated.spesialis}
+                                 onPress={()=>navigation.navigate('DoctorProfile')}/>
+                            )
+                        })
+                    } */}
                     <Gap height={30}/>
                     <Text style={styles.text}>Goos News</Text>
                     <Gap height={16}/>

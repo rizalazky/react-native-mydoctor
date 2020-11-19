@@ -1,22 +1,24 @@
-import { NavigationContainer } from '@react-navigation/native'
-import { setLogLevel } from 'firebase'
-import React,{useState} from 'react'
+import React from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { showMessage } from 'react-native-flash-message'
 import { ILLogo } from '../../assets'
 import { Button, Gap,Input,Link, Loading } from '../../components'
 import { Firebase } from '../../config'
 import { Fonts, useForm, _storeData } from '../../utils'
+import {useDispatch} from 'react-redux'
 
 const LogIn = ({navigation}) => {
-    const [isLoading, setIsLoading] = useState(false)
     const [form,setForm]=useForm({
         email:'',
         password:''
     })
+    const dispatch = useDispatch()
 
     const sigIn=()=>{
-        setIsLoading(true)
+        dispatch({
+            type:'SET_LOADING',
+            value:true
+        })
         Firebase.auth().signInWithEmailAndPassword(form.email,form.password)
         .then(response=>{
             // console.log(response)
@@ -34,12 +36,18 @@ const LogIn = ({navigation}) => {
                     photo:res.val().photo,
                     uid:response.user.uid
                 })
-                setIsLoading(false)
+                dispatch({
+                    type:'SET_LOADING',
+                    value:false
+                })
                 navigation.navigate('Main')
             })
         })
         .catch(err=>{
-            setIsLoading(false)
+            dispatch({
+                type:'SET_LOADING',
+                value:false
+            })
             showMessage({
                 message:'Sory...'+err.message,
                 type:"danger",
@@ -47,18 +55,17 @@ const LogIn = ({navigation}) => {
             })
         })
 
-        // navigation.replace("Main")
     }
 
     return (
-        <>   
+       
             <View style={styles.sigIn}>
                 <ILLogo/>
                 <Text style={styles.sigIn__Text}>Masuk dan Mulai berkonsultasi</Text>
                 <Gap height={40}/>
                 <Input label="Email Adress" placeholder="type email here..." onChangeText={(e)=>setForm('email',e)}/>
-                <Gap height={24}/>
-                <Input label="Password" placeholder="type password here..." onChangeText={(e)=>setForm('password',e)}/>
+                
+                <Input label="Password" secureTextEntry placeholder="type password here..." onChangeText={(e)=>setForm('password',e)}/>
                 <Gap height={10}/>
                 <Link title="Forgot My Password" fontSize={12}/>
                 <Gap height={40}/>
@@ -67,10 +74,7 @@ const LogIn = ({navigation}) => {
                 <Link title="Create New Account" align="center" fontSize={16} 
                     onPress={()=>navigation.navigate("Register")}/>
             </View>
-            {
-                isLoading && <Loading/>
-            }
-        </>
+        
     )
 }
 

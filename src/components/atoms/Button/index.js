@@ -11,12 +11,12 @@ export default function Button({type,title,onPress,icon,width,disabled}) {
     }
     
     if(type === 'send-chat'){
-        return <ButtonSendChat disabled={disabled}/>
+        return <ButtonSendChat disabled={disabled} onPress={onPress}/>
     }
 
     if(disabled){
         return(
-            <View style={styles.disabled} onPress={onPress}>
+            <View style={styles.disabled}>
                 <Text style={styles.ButtonText(type)}>{title}</Text>
             </View>
         )

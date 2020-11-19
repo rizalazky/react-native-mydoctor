@@ -4,9 +4,9 @@ import { Colors, Fonts } from '../../../utils'
 import { Button, Gap } from '../../atoms'
 import HeaderProfile from './HeaderProfile'
 
-const Header = ({title,onPress,type}) => {
+const Header = ({title,onPress,type,image,text}) => {
     if(type === 'header-profile'){
-        return <HeaderProfile onPress={onPress}/>
+        return <HeaderProfile onPress={onPress} text={text} title={title} image={image}/>
     }
 
     return (

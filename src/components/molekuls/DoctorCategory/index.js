@@ -3,16 +3,16 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { ILCatObat, ILCatPsikiater, ILCatUmum } from '../../../assets'
 import { Colors, Fonts } from '../../../utils'
 
-const DoctorCategory = ({label,icon,onPress}) => {
+const DoctorCategory = ({label,onPress}) => {
 
     const Icon=()=>{
-        if(icon === "DokterUmum"){
+        if(label === "Dokter Umum"){
             return <ILCatUmum/>
         }
-        if(icon === "Psikater"){
+        if(label === "Psikater"){
             return <ILCatPsikiater/>
         }
-        if(icon === "DokterObat"){
+        if(label === "Dokter Obat"){
             return <ILCatObat/>
         }
 

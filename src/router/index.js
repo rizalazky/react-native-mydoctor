@@ -38,6 +38,7 @@ export default function Router() {
                 <Stack.Screen name="DoctorProfile" component={DoctorProfile} options={{headerShown:false}}/>
                 <Stack.Screen name="UserProfile" component={UserProfile} options={{headerShown:false}}/>
                 <Stack.Screen name="EditProfile" component={EditProfile} options={{headerShown:false}}/>
+                <Stack.Screen name="Chatting" component={Chatting} options={{headerShown:false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
