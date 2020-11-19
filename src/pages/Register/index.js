@@ -92,9 +92,11 @@ const Register = ({navigation}) => {
     }
     
 
-    const handleCheckIsDoctor=()=>{
-        setIsDoctor(!isDoctor)
-        if(isDoctor==true){
+    const handleCheckIsDoctor=async()=>{
+        await setIsDoctor(!isDoctor)
+        console.log(isDoctor)
+        if(isDoctor==false){
+            console.log('rettt')
             Firebase.database().ref('doctor_categories/')
             .once('value').then(res=>{
                 let cat=[]
