@@ -13,22 +13,20 @@ const HomeProfile = ({onPress}) => {
     })
 
     useEffect(() => {
-        _retrieveData('user').then(res=>{
-            console.log('response from Home Profile')
-            console.log(res)
+        _retrieveData('user').then(res=>{ 
             let data=res
             data.photo={uri:res.photo}
             setDataUser(data)
         })
         
-    }, [])
+    }, [dataUser])
 
     return (
         <TouchableOpacity style={styles.container} onPress={onPress}>
             <Image source={dataUser.photo} style={styles.image}/>
             <View>
                 <Text style={styles.userName}>{dataUser.fullName}</Text>
-                <Text style={styles.userProfesional}>{dataUser.pekerjaan}</Text>
+                <Text style={styles.userProfesional}>{dataUser.isDoctor ?dataUser.spesialis:dataUser.pekerjaan}</Text>
             </View>
         </TouchableOpacity>
     )

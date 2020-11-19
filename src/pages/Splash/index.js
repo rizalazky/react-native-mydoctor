@@ -7,16 +7,17 @@ import { Fonts } from '../../utils'
 export default function Splash({navigation}) {
 
     useEffect(() => {
-        setTimeout(()=>{
-            Firebase.auth().onAuthStateChanged(user=>{
+        const unsubscribe=Firebase.auth().onAuthStateChanged(user=>{
+            setTimeout(()=>{
                 if(user){
                     navigation.replace('Main')
                 }else{
                     navigation.replace('GetStarted')
                 }
-            })
-        },3000)
-    }, [])
+            },3000)
+        })
+        return ()=>unsubscribe()
+    }, [navigation])
 
     return (
         <View style={styles.Splash}>

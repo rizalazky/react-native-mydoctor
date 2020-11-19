@@ -12,11 +12,20 @@ const ListDoctor = ({navigation,route}) => {
 
     useEffect(()=>{
         Firebase.database().ref('list_doctor/')
-        .orderByChild('doctorCategoryId')
-        .equalTo(params.id_cat)
+        .orderByChild('spesialis')
+        .equalTo(params.titleHeader)
         .once('value')
         .then((result)=>{
-            setListDoctor(result.val())
+            let datDoctors=[]
+            Object.keys(result.val()).map(keyDoc=>{
+                let dt=result.val()[keyDoc]
+                dt.uidPartner=keyDoc
+                datDoctors.push({
+                    id:keyDoc,
+                    data:dt
+                })
+            })
+            setListDoctor(datDoctors)
         }).catch(err=>console.log(err))
 
     },[])
@@ -24,9 +33,9 @@ const ListDoctor = ({navigation,route}) => {
         <View style={styles.page}>
             <Header title={`Pilih ${params.titleHeader}`} type='dark' onPress={()=>navigation.goBack()}/>
             {
-                Object.values(listDoctor).map((data,index)=>{
+                listDoctor.map((doctor)=>{
                     return(
-                        <List key={index} imageSource={{uri:data.image}} title={data.doctorName} isNext onPress={()=>navigation.navigate('Chatting',{data:data})}/>
+                        <List key={doctor.id} imageSource={{uri:doctor.data.photo}} title={doctor.data.fullName} isNext onPress={()=>navigation.navigate('Chatting',{data:doctor})}/>
                     )
                 })
             }

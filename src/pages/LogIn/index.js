@@ -21,7 +21,9 @@ const LogIn = ({navigation}) => {
         })
         Firebase.auth().signInWithEmailAndPassword(form.email,form.password)
         .then(response=>{
-            // console.log(response)
+
+            setForm('reset')
+            console.log(form,'from')
             Firebase.database().ref(`/users/${response.user.uid}`)
             .once('value').then(res=>{
                 showMessage({
@@ -29,17 +31,12 @@ const LogIn = ({navigation}) => {
                     type:"success",
                     icon:"success"
                 })
-                _storeData('user',{
-                    fullName:res.val().fullName,
-                    email:res.val().email,
-                    pekerjaan:res.val().pekerjaan,
-                    photo:res.val().photo,
-                    uid:response.user.uid
-                })
+                _storeData('user',res.val())
                 dispatch({
                     type:'SET_LOADING',
                     value:false
                 })
+                
                 navigation.navigate('Main')
             })
         })
@@ -63,9 +60,9 @@ const LogIn = ({navigation}) => {
                 <ILLogo/>
                 <Text style={styles.sigIn__Text}>Masuk dan Mulai berkonsultasi</Text>
                 <Gap height={40}/>
-                <Input label="Email Adress" placeholder="type email here..." onChangeText={(e)=>setForm('email',e)}/>
+                <Input label="Email Adress" placeholder="type email here..." value={form.email} onChangeText={(e)=>setForm('email',e)}/>
                 
-                <Input label="Password" secureTextEntry placeholder="type password here..." onChangeText={(e)=>setForm('password',e)}/>
+                <Input label="Password" secureTextEntry placeholder="type password here..." value={form.password} onChangeText={(e)=>setForm('password',e)}/>
                 <Gap height={10}/>
                 <Link title="Forgot My Password" fontSize={12}/>
                 <Gap height={40}/>

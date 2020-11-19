@@ -7,7 +7,7 @@ export const useForm =(initialValue)=>{
         values,
         (formType,formValue)=>{
             if(formType =='reset'){
-                return setValues({...values})
+                return setValues({...initialValue})
             }
             return (
                 setValues({...values,[formType]:formValue})

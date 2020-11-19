@@ -9,7 +9,7 @@ const Chatting = ({navigation,route}) => {
     const [user,setUser]=useState({})
     const [chatText,setChatText]=useState('')
     const [chatList,setChatList]=useState([])
-    const dataDoctor=route.params.data
+    const dataPatner=route.params.data
     
     
     useEffect(()=>{
@@ -18,8 +18,19 @@ const Chatting = ({navigation,route}) => {
             setUser(res)
         })
         const today=new Date()
+
+        let chatId=''
         
-        const chatId=`${user != null && user.uid}_${dataDoctor.id}`
+        if(dataPatner.idMessage){
+            console.log('from abc')
+            chatId=dataPatner.idMessage
+        }else{
+            console.log('from jbukan')
+            chatId=`${user.uid}_${dataPatner.id}`
+        }
+        
+        console.log(dataPatner.data.uidPartner,'chatId')
+        
         Firebase.database().ref(`chatting/${chatId}/allchat/`)
         .on('value',snapshot=>{
             if(snapshot.val()){
@@ -43,13 +54,22 @@ const Chatting = ({navigation,route}) => {
                 setChatList(chatList)
             }
         })
-    },[user.uid,dataDoctor.id])
+    },[user.uid,dataPatner.id])
 
     
 
     const sendChat=()=>{
 
-        const chatId=`${user.uid}_${dataDoctor.id}`
+        let chatId=''
+        
+        if(dataPatner.idMessage){
+            console.log('from abc')
+            chatId=dataPatner.idMessage
+        }else{
+            console.log('from jbukan')
+            chatId=`${user.uid}_${dataPatner.id}`
+        }
+        
         const today=new Date()
         const dateChat=`${today.getDate()}-${today.getMonth()}-${today.getFullYear()}`
         let dataChat={
@@ -61,19 +81,25 @@ const Chatting = ({navigation,route}) => {
         let dataHistoryChat={
             lastChatContent:chatText,
             lastChatDate:dateChat,
-            uidPartner:dataDoctor.id
+            uidPartner:dataPatner.data.uidPartner
+        }
+        let dataHistoryChatForDoctor={
+            lastChatContent:chatText,
+            lastChatDate:dateChat,
+            uidPartner:user.uid
         }
         Firebase.database().ref(`chatting/${chatId}/allchat/${dateChat}/`).push(dataChat)
         .then( ()=>{
             setChatText('')
             Firebase.database().ref(`messages/${user.uid}/${chatId}/`).set(dataHistoryChat)
+            Firebase.database().ref(`messages/${dataPatner.data.uidPartner}/${chatId}/`).set(dataHistoryChatForDoctor)
         })
         
     }
 
     return (
         <View style={styles.container}>
-            <Header type='header-profile' title={dataDoctor.doctorName} text={dataDoctor.spesialis} image={{uri:dataDoctor.image}} onPress={()=>navigation.goBack()}/>
+            <Header type='header-profile' title={dataPatner.data.fullName} text={dataPatner.data.spesialis} image={{uri:dataPatner.data.photo}} onPress={()=>navigation.goBack()}/>
             <View style={styles.container__chat}>
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {

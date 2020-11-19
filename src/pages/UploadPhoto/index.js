@@ -17,18 +17,12 @@ const UploadFoto = ({navigation,route}) => {
     const [hasFoto,setHasFoto]=useState(false)
 
     const getFoto=()=>{
-        console.log('test')
-        // ImagePicker.launchImageLibrary((response) => {
-        //     // Same code as in above section!
-        //     console.log(response)
-        //     console.log('tet')
-        // });
+        
         ImagePicker.showImagePicker({
             quality:0.5,
             maxHeight:200,
             maxWidth:200
         },(response) => {
-            console.log('Response = ', response);
           
             if (response.didCancel) {
               console.log('User cancelled image picker');
@@ -53,6 +47,12 @@ const UploadFoto = ({navigation,route}) => {
         .update({
             photo:photoForDb
         })
+        if(route.params.isDoctor==true){
+            Firebase.database().ref(`list_doctor/${uid}/`)
+            .update({
+                photo:photoForDb
+            })
+        }
         // end upload foto to db
 
         // local storage

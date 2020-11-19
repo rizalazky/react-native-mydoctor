@@ -13,19 +13,19 @@ const DoctorProfile = ({navigation,route}) => {
     return (
         <View style={styles.container}>
             <Header title='Doctor Profile' onPress={()=>navigation.goBack()}/>
-            <Avatar icon={data.jenis_kelamin == 'Pria'?'iconMale':'iconFemale'} name={data.doctorName} profesion={data.spesialis} imageSource={{uri:data.image}}/>
+            <Avatar icon={data.jenis_kelamin == 'Pria'?'iconMale':'iconFemale'} name={data.data.fullName} profesion={data.data.spesialis} imageSource={{uri:data.data.photo}}/>
             <Gap height={16}/>
             <View style={styles.content}>
                 <Text style={styles.label}>Alumnus</Text>
-                <Text style={styles.inputText}>{data.alumnus}</Text>
+                <Text style={styles.inputText}>{data.data.alumnus}</Text>
             </View>
             <View style={styles.content}>
                 <Text style={styles.label}>Tempat Praktik</Text>
-                <Text style={styles.inputText}>{data.tempat_praktik}</Text>
+                <Text style={styles.inputText}>{data.data.tempatPraktik}</Text>
             </View>
             <View style={styles.content}>
                 <Text style={styles.label}>No. STR</Text>
-                <Text style={styles.inputText}>{data.no_str}</Text>
+                <Text style={styles.inputText}>{data.data.noStr}</Text>
             </View>
             <Gap height={23}/>
             <View style={{padding:40}}>

@@ -24,14 +24,12 @@ const Messages = ({navigation}) => {
             if(val.val()){
                 let message=val.val()
                 const promises=await Object.keys(message).map(async messagesKey=>{
-                    const getListDoctor=await Firebase.database().ref(`list_doctor/`)
-                    .orderByChild('id')
-                    .equalTo(message[messagesKey].uidPartner)
+                    const getPatner=await Firebase.database().ref(`users/`+message[messagesKey].uidPartner)
                     .once('value')
-                    let dataDoctor=getListDoctor.val()
-                    let dataFinal={...dataDoctor[Object.keys(dataDoctor)],...message[messagesKey]}
+                    let dataPatner=getPatner.val()
+                    let dataFinal={...dataPatner,...message[messagesKey]}
                     newMessages.push({
-                        id:messagesKey,
+                        idMessage:messagesKey,
                         data:dataFinal
                     })  
                 })
@@ -48,11 +46,11 @@ const Messages = ({navigation}) => {
                 {
                     pesan.map(mess=>{  
                         return(
-                            <List key={mess.id} 
-                                title={mess.data.doctorName} 
-                                imageSource={{uri:mess.data.image}} 
+                            <List key={mess.idMessage} 
+                                title={mess.data.fullName} 
+                                imageSource={{uri:mess.data.photo}} 
                                 desc={mess.data.lastChatContent}
-                                onPress={()=>navigation.navigate('Chatting',{data:mess.data})} 
+                                onPress={()=>navigation.navigate('Chatting',{data:mess})} 
                                 isNext/>
                         )
                     })

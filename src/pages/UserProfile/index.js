@@ -27,9 +27,10 @@ const UserProfile = ({navigation}) => {
     const logout=()=>{
         Firebase.auth().signOut()
         .then(res=>{
-            console.log(res)
+            console.log(res,'then')
+            navigation.navigate('Splash')
         }).catch(err=>{
-            console.log(err)
+            console.log('err',err)
         })
     }
 
