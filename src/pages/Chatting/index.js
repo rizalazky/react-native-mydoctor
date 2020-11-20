@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect,useRef,useState } from 'react'
 import { StyleSheet, Text, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import {Header,InputChat,ChatItem} from '../../components'
@@ -63,10 +63,10 @@ const Chatting = ({navigation,route}) => {
         let chatId=''
         
         if(dataPatner.idMessage){
-            console.log('from abc')
+            
             chatId=dataPatner.idMessage
         }else{
-            console.log('from jbukan')
+            
             chatId=`${user.uid}_${dataPatner.id}`
         }
         
@@ -97,11 +97,17 @@ const Chatting = ({navigation,route}) => {
         
     }
 
+    const ScrollViewRef=useRef(null)
+
+    useEffect(()=>{
+
+        ScrollViewRef.current.scrollToEnd()
+    },chatList.id)
     return (
         <View style={styles.container}>
             <Header type='header-profile' title={dataPatner.data.fullName} text={dataPatner.data.spesialis} image={{uri:dataPatner.data.photo}} onPress={()=>navigation.goBack()}/>
             <View style={styles.container__chat}>
-                <ScrollView showsVerticalScrollIndicator={false}>
+                <ScrollView showsVerticalScrollIndicator={false} ref={ScrollViewRef}>
                     {
                         chatList.map((chat)=>{
                             return(

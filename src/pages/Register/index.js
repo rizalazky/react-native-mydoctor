@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { View,StyleSheet, CheckBox,Text } from 'react-native'
 import { Button, Gap, Header, Input,Loading } from '../../components'
 import { Firebase } from '../../config'
@@ -94,20 +94,19 @@ const Register = ({navigation}) => {
 
     const handleCheckIsDoctor=async()=>{
         await setIsDoctor(!isDoctor)
-        console.log(isDoctor)
         if(isDoctor==false){
-            console.log('rettt')
             Firebase.database().ref('doctor_categories/')
             .once('value').then(res=>{
                 let cat=[]
                 Object.keys(res.val()).map(ct=>{
                     cat.push(res.val()[ct].desc)
                 })
-                console.log(cat,'cat')
                 setCategorieDoctor(cat)
             })
         }
     }
+
+    
 
     return (
         <View style={styles.page}>
